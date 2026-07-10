@@ -38,16 +38,15 @@ impl App {
             KeyCode::Char('j') => self.power_commands.next(),
             KeyCode::Char('k') => self.power_commands.previous(),
             KeyCode::Enter => {
-                if let Some(command) = self.power_commands.selected() {
-                    if let Err(err) = self
+                if let Some(command) = self.power_commands.selected()
+                    && let Err(err) = self
                         .commands_tx
                         .send(Self::power_command_message(command))
                         .await
-                    {
-                        error!(?err, "Failed to send command");
-                        self.exit = true;
-                    };
-                }
+                {
+                    error!(?err, "Failed to send command");
+                    self.exit = true;
+                };
             }
             _ => self.exit = true,
         }

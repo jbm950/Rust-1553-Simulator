@@ -50,11 +50,10 @@ async fn handle_client(
             result = broadcast_rx.recv() => {
                 match result {
                     Ok(msg) => {
-                        if msg.sender != addr {
-                            if writer.write_all(&msg.bytes).await.is_err() {
+                        if msg.sender != addr
+                            && writer.write_all(&msg.bytes).await.is_err() {
                                 break;
                             }
-                        }
                     }
 
                     Err(broadcast::error::RecvError::Lagged(n)) => {
