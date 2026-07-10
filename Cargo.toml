@@ -2,6 +2,12 @@
 name = "rs1553_net"
 version = "0.1.0"
 edition = "2024"
+description = "A Rust MIL-STD-1553 simulator featuring a bus controller, simulated remote terminals, and a terminal user interface."
+license = "Apache-2.0"
+repository = "https://github.com/jbm950/Rust-1553-Simulator"
+homepage = "https://github.com/jbm950/Rust-1553-Simulator"
+readme = "README.md"
+keywords = ["mil-std-1553", "simulation", "networking", "tui"]
 
 [dependencies]
 ratatui = "0.30.2"
