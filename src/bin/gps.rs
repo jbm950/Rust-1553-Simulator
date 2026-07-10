@@ -1,4 +1,4 @@
-use rs1553_net::devices::gps;
+use milstd1553_sim::devices::gps;
 
 use tracing::{error, info};
 use tracing_subscriber::{EnvFilter, Layer, fmt, layer::SubscriberExt, util::SubscriberInitExt};

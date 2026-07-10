@@ -1,4 +1,4 @@
-use rs1553_net::net::tcp_bus;
+use milstd1553_sim::net::tcp_bus;
 
 use tokio::net::TcpListener;
 use tracing::info;

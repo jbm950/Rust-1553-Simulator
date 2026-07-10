@@ -1,5 +1,5 @@
 [package]
-name = "rs1553_net"
+name = "milstd1553-sim"
 version = "0.1.0"
 edition = "2024"
 description = "A Rust MIL-STD-1553 simulator featuring a bus controller, simulated remote terminals, and a terminal user interface."

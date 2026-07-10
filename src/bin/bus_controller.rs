@@ -1,4 +1,4 @@
-use rs1553_net::app::run;
+use milstd1553_sim::app::run;
 
 use tokio::io;
 use tracing::info;

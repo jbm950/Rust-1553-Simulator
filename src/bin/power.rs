@@ -1,4 +1,4 @@
-use rs1553_net::devices::power;
+use milstd1553_sim::devices::power;
 
 use tracing::{error, info};
 use tracing_subscriber::{EnvFilter, Layer, fmt, layer::SubscriberExt, util::SubscriberInitExt};
