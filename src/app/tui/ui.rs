@@ -24,11 +24,7 @@ pub fn ui(frame: &mut Frame, app: &mut App) {
     let power_commands = List::new(app.power_commands.list_commands())
         .block(Block::bordered())
         .highlight_style(Modifier::REVERSED);
-    frame.render_stateful_widget(
-        power_commands,
-        power_cmd_area,
-        &mut app.power_commands.state(),
-    );
+    frame.render_stateful_widget(power_commands, power_cmd_area, app.power_commands.state());
 
     let gps_window = Paragraph::new(gps_lines(&app.gps_telemetry)).block(Block::bordered());
     frame.render_widget(gps_window, gps_area);
