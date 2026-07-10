@@ -18,7 +18,7 @@ pub async fn run(server_addr: SocketAddr) {
 
     let (transactions_tx, mut transactions_rx) = mpsc::channel::<Transaction>(32);
     let bus_controller = TcpBusController::new(server_addr).await.unwrap();
-    let _ = tokio::spawn(bus_controller.run(command_rx, transactions_tx));
+    tokio::spawn(bus_controller.run(command_rx, transactions_tx));
 
     let mut app_state = App::new(command_tx);
     let _ = tui::run_app(&mut app_state, &mut transactions_rx).await;
