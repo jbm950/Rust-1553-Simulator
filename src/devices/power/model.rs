@@ -1,9 +1,12 @@
+//! Data model for the simulated power device.
+
 use std::fmt::{self, Display, Formatter};
 
 use tokio::time::Duration;
 
 use crate::protocol::DataWord;
 
+/// Errors that can occur decoding power telemetry or commands from raw bytes.
 #[derive(Debug)]
 pub enum PowerParseError {
     InvalidLength { expected: usize, actual: usize },
@@ -12,6 +15,7 @@ pub enum PowerParseError {
     UnknownCommand(u8),
 }
 
+/// Operating mode of the simulated power subsystem.
 #[derive(Debug, Clone, Copy)]
 pub enum PowerMode {
     Idle,
@@ -54,6 +58,10 @@ impl Display for PowerMode {
     }
 }
 
+/// A fault condition affecting the power subsystem.
+///
+/// A non-`None` fault forces the subsystem back to `PowerMode::Idle`
+/// until it's cleared.
 #[derive(Debug, Clone, Copy)]
 pub enum Fault {
     None,
@@ -96,6 +104,9 @@ impl Display for Fault {
     }
 }
 
+/// Simulated power subsystem state: mode, charge, temperature, and fault.
+///
+/// Evolves over time via `update` and responds to commands via `handle_command`.
 pub struct Power {
     pub mode: PowerMode,
     pub charge_percent: f32,
@@ -176,6 +187,7 @@ impl Power {
     }
 }
 
+/// Snapshot of power subsystem state sent to the bus controller.
 #[derive(Debug)]
 pub struct PowerTelemetry {
     pub mode: PowerMode,
@@ -234,6 +246,7 @@ impl PowerTelemetry {
     }
 }
 
+/// A command the bus controller can send to the power RT.
 #[derive(Clone, Copy)]
 pub enum PowerCommand {
     SetMode(PowerMode),

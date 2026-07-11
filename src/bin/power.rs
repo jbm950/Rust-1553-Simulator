@@ -1,3 +1,5 @@
+//! Launches the simulated power device
+
 use milstd1553_sim::devices::power;
 
 use tracing::{error, info};

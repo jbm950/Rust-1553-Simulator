@@ -1,3 +1,5 @@
+//! Launches the simulated 1553 bus
+
 use milstd1553_sim::net::tcp_bus;
 
 use tokio::net::TcpListener;

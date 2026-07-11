@@ -11,7 +11,7 @@ use crate::protocol::{
     CommandMessage, DataWord, StatusMessage, StatusWord, Transaction, TxRx, WORD_SIZE,
 };
 
-/// Bus Controller for a 1553 over Ethernet implementation.
+/// Bus controller implementation for the TCP-based MIL-STD-1553 simulator.
 pub struct TcpBusController {
     bus: TcpStream,
 }
@@ -53,6 +53,9 @@ impl TcpBusController {
         })
     }
 
+    /// Drives the bus controller: pulls commands from command_rx, executes the
+    /// transaction, and forwards the result to transactions_tx until the
+    /// channel closes.
     pub async fn run(
         mut self,
         mut command_rx: mpsc::Receiver<CommandMessage>,

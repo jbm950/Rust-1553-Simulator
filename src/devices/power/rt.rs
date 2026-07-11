@@ -14,6 +14,7 @@ use crate::{
 
 const UPDATE_RATE: Duration = Duration::from_millis(100);
 
+/// Power RT simulation loop.
 pub async fn run(server: SocketAddr, rt_id: u8) -> io::Result<()> {
     let mut power_state = Power {
         mode: PowerMode::Discharging,

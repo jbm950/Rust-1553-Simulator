@@ -9,6 +9,7 @@ use crate::{
     runtime::scheduler,
 };
 
+/// Starts the bus controller and terminal user interface.
 pub async fn run(server_addr: SocketAddr) {
     let (command_tx, command_rx) = mpsc::channel::<CommandMessage>(32);
 

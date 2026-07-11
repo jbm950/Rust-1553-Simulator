@@ -67,6 +67,7 @@ async fn handle_client(
     }
 }
 
+/// Simulated MIL-STD-1553 bus via a broadcast server
 pub async fn tcp_bus(listener: TcpListener) -> io::Result<()> {
     // broadcast::channel requires an initial receiver; real ones come from `.subscribe()` per
     // client.

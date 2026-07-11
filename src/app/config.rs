@@ -1,3 +1,5 @@
+//! Configuration used to initialize the simulator
+
 use std::time::Duration;
 
 use crate::{
@@ -5,13 +7,16 @@ use crate::{
     runtime::scheduler::PeriodicCommand,
 };
 
+const POWER_RT: u8 = 5;
+const GPS_RT: u8 = 13;
+
 pub fn periodic_commands() -> Vec<PeriodicCommand> {
     vec![
         PeriodicCommand {
             interval: Duration::from_secs(1),
             command: CommandMessage {
                 word: CmdWord::new(
-                    5,
+                    POWER_RT,
                     Subaddress {
                         address: 7,
                         tr: TxRx::T,
@@ -25,7 +30,7 @@ pub fn periodic_commands() -> Vec<PeriodicCommand> {
             interval: Duration::from_secs(2),
             command: CommandMessage {
                 word: CmdWord::new(
-                    13,
+                    GPS_RT,
                     Subaddress {
                         address: 13,
                         tr: TxRx::T,

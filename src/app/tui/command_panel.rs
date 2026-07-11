@@ -2,6 +2,7 @@ use ratatui::widgets::{ListItem, ListState};
 
 use crate::devices::power::{Fault, PowerCommand, PowerMode};
 
+/// Maintains the selectable list of commands for the simulated power device.
 pub struct CommandPanel {
     commands: [PowerCommand; 6],
     state: ListState,

@@ -1,3 +1,5 @@
+//! Terminal user interface for interacting with the simulator
+
 mod command_panel;
 mod input;
 mod run;

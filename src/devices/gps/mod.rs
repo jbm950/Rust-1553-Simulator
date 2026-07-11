@@ -1,3 +1,8 @@
+//! Simulated GPS device
+//!
+//! Subaddresses:
+//!   - 13T - Sends GPS telemetry.
+
 mod model;
 mod rt;
 

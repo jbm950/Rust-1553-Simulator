@@ -9,6 +9,7 @@ use crate::{
     protocol::{StatusMessage, StatusWord, Subaddress, TxRx},
 };
 
+/// GPS RT simulation loop.
 pub async fn run(server: SocketAddr, rt_id: u8) -> io::Result<()> {
     let mut last_update = Instant::now();
 

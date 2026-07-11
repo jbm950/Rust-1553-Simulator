@@ -14,6 +14,7 @@ const SUBSYSTEM_FLAG_POSITION: u8 = 2;
 const DYN_BUS_ACCEPT_POSITION: u8 = 1;
 const TERMINAL_FLAG_POSITION: u8 = 0;
 
+/// Represents a MIL-STD-1553 Status Word
 #[derive(Copy, Clone, Debug, PartialEq)]
 pub struct StatusWord {
     pub rt_addr: u8,

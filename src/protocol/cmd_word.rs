@@ -5,6 +5,7 @@ use super::{
     support::{extract_field, extract_flag},
 };
 
+/// Enum representing whether message is a Transmit or Receive
 // Values are the actual protocol bit values for each type.
 #[derive(Copy, Clone, Debug, Eq, Hash, PartialEq)]
 pub enum TxRx {
@@ -18,6 +19,7 @@ impl From<bool> for TxRx {
     }
 }
 
+/// Represents Remote Terminal Subaddress ID and Transmit/Receive
 #[derive(Copy, Clone, Debug, Eq, Hash, PartialEq)]
 pub struct Subaddress {
     pub address: u8,
@@ -29,6 +31,7 @@ const TX_RX_POSITION: u8 = 10;
 const SUBADDRESS_POSITION: u8 = 5;
 const WORD_COUNT_POSITION: u8 = 0;
 
+/// Represents a MIL-STD-1553 Command Word
 #[derive(Copy, Clone, Debug, PartialEq)]
 pub struct CmdWord {
     pub rt_addr: u8,
@@ -54,7 +57,7 @@ impl ProtocolWord for CmdWord {
 
 impl From<CmdWord> for u16 {
     fn from(cmd_word: CmdWord) -> Self {
-        // 1553 protocl states 32 words -> value of 0
+        // 1553 protocol states 32 words -> value of 0
         let word_count = if cmd_word.word_count == 32 {
             0
         } else {

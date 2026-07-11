@@ -1,3 +1,5 @@
+//! Shared application state used by the terminal interface.
+
 use ratatui::crossterm::event::{KeyCode, KeyEvent};
 use tokio::sync::mpsc;
 use tracing::{debug, error};
@@ -14,6 +16,8 @@ use crate::{
 const POWER_RT: u8 = 5;
 const GPS_RT: u8 = 13;
 
+/// Shared state for the bus controller TUI application, updated by user
+/// input and incoming bus transactions.
 pub struct App {
     pub power_telemetry: Option<PowerTelemetry>,
     pub power_commands: CommandPanel,

@@ -1,7 +1,10 @@
+//! Data model for the simulated GPS device.
+
 use tokio::time::Duration;
 
 use crate::protocol::DataWord;
 
+/// Simulated GPS state: current time, position, and velocity.
 #[derive(Debug)]
 pub struct GpsTelemetry {
     pub time: GpsTime,
@@ -57,6 +60,7 @@ impl GpsTelemetry {
     }
 }
 
+/// GPS week number and elapsed seconds within that week.
 #[derive(Debug)]
 pub struct GpsTime {
     pub week: u16,
@@ -83,6 +87,7 @@ impl GpsTime {
     }
 }
 
+/// 3D position in simulated GPS coordinates (meters).
 #[derive(Debug)]
 pub struct Position {
     pub x: f32,
@@ -112,6 +117,7 @@ impl Position {
     }
 }
 
+/// 3D velocity in simulated GPS coordinates (meters/second).
 #[derive(Debug)]
 pub struct Velocity {
     pub x: f32,

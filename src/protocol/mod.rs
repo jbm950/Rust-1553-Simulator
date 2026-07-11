@@ -1,3 +1,8 @@
+//! Types representing MIL-STD-1553 protocol words and messages
+//!
+//! This module is transport-agnostic and is responsible only for
+//! serialization and deserialization of protocol data structures.
+
 mod cmd_word;
 mod data_word;
 mod message;
@@ -13,4 +18,5 @@ pub use protocol_word::ProtocolWord;
 pub use status_word::StatusWord;
 pub use transaction::Transaction;
 
+/// Represents MIL-STD-1553 word size (2 bytes)
 pub const WORD_SIZE: usize = 2;

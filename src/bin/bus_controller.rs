@@ -1,3 +1,5 @@
+//! Launches the simulated bus controller
+
 use milstd1553_sim::app::run;
 
 use tokio::io;

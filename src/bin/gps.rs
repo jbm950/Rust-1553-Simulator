@@ -1,3 +1,5 @@
+//! Launches the simulated GPS device
+
 use milstd1553_sim::devices::gps;
 
 use tracing::{error, info};

@@ -1,12 +1,16 @@
 use crate::protocol::{CmdWord, DataWord, ProtocolWord, StatusWord};
 
+/// Represents a protocol word and data words in a single transmission
 #[derive(Clone)]
 pub struct Message<W> {
     pub word: W,
     pub data: Vec<DataWord>,
 }
 
+/// Represents a Command Word and any Data Words sent to RT
 pub type CommandMessage = Message<CmdWord>;
+
+/// Represents a Status Word and any Data Words sent from RT
 pub type StatusMessage = Message<StatusWord>;
 
 impl<W: ProtocolWord> Message<W> {

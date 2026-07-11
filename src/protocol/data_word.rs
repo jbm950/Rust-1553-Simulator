@@ -1,5 +1,6 @@
 use super::WORD_SIZE;
 
+/// Represents a MIL-STD-1553 Data Word
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub struct DataWord(pub u16);
 

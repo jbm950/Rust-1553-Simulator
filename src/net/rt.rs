@@ -8,7 +8,7 @@ use tracing::{debug, trace};
 
 use crate::protocol::{CmdWord, CommandMessage, DataWord, StatusMessage, TxRx, WORD_SIZE};
 
-/// Remote terminal for a 1553 over Ethernet implementation.
+/// Remote Terminal implementation for the TCP-based MIL-STD-1553 simulator.
 pub struct TcpRt {
     rt_id: u8,
     bus: TcpStream,
@@ -20,6 +20,8 @@ impl TcpRt {
         Ok(Self { rt_id, bus })
     }
 
+    /// Blocks until a command message addressed to this RT is received,
+    /// discarding transactions for other RTs.
     pub async fn read(&mut self) -> io::Result<CommandMessage> {
         loop {
             let cmd_word = self.read_cmd_word().await?;
@@ -74,6 +76,7 @@ impl TcpRt {
         Ok(())
     }
 
+    /// Sends a status message (and any data words) back to the bus.
     pub async fn write(&mut self, status_msg: StatusMessage) -> io::Result<()> {
         let msg_bytes = status_msg.encode();
         trace!(
